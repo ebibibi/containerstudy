@@ -56,3 +56,25 @@ docker rmi httpd
 
 # イメージの状態を確認
 docker images
+
+# VSCodeのDocker拡張機能でも色々とできるよ！
+
+# イメージのビルド
+docker build -t myhttpd .
+docker history myhttpd
+docker images
+
+# 'myhttpd'という名前で'httpd'というイメージからコンテナを作成
+docker run --name myhttpdrun -d -p 80:80 myhttpd
+
+$dockerid = $(docker ps -a -q --filter "name=myhttpdrun")
+docker stop $dockerid
+docker rm $dockerid
+
+
+docker run --name myhttpdrun80 -d -p 80:80 myhttpd
+docker run --name myhttpdrun8080 -d -p 8080:80 myhttpd
+docker run --name myhttpdrun8081 -d -p 8081:80 myhttpd
+docker run --name myhttpdrun8082 -d -p 8082:80 myhttpd
+
+docker ps -a
